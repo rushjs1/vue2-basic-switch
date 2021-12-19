@@ -2,10 +2,19 @@
   <div class="switch">
     <div
       ref="switchBtn"
-      :class="!this.toggle ? 'switch-btn-false' : 'switch-btn-true'"
+      :class="
+        !this.toggle
+          ? `switch-btn-false-${this.size}`
+          : `switch-btn-true-${this.size}`
+      "
       @click="changeValue"
     >
-      <div :class="!this.toggle ? 'ball-false' : 'ball-true'"></div>
+      <div
+        ref="ball"
+        :class="
+          !this.toggle ? `ball-false-${this.size}` : `ball-true-${this.size}`
+        "
+      ></div>
     </div>
   </div>
 </template>
@@ -18,11 +27,16 @@ export default {
     value: {
       type: Boolean,
       default: false
+    },
+    size: {
+      type: String,
+      default: "sm"
     }
   },
   data() {
     return {
-      toggle: this.value
+      toggle: this.value,
+      sizeValue: this.size
     };
   },
   methods: {
@@ -35,14 +49,17 @@ export default {
 </script>
 
 <style>
-.switch-btn-false {
+.switch-btn-false-sm {
   background-color: transparent;
   border-radius: 7px;
   width: 25px;
   display: flex;
   justify-content: flex-start;
   transition: 0.3s;
-  border: 1px solid #c4c4c4;
+  border: 1px;
+  border-style: solid;
+  border-color: #c4c4c4;
+
   height: 14px;
   align-items: center;
 
@@ -52,7 +69,25 @@ export default {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
-.ball-false {
+
+.switch-btn-false-lg {
+  background-color: transparent;
+  border-radius: 15px;
+  width: 45px;
+  display: flex;
+  justify-content: flex-start;
+  transition: 0.3s;
+  border: 2px solid #c4c4c4;
+  height: 24px;
+  align-items: center;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.ball-false-sm {
   background-color: #c4c4c4;
   border-radius: 50px;
   width: 10px;
@@ -68,7 +103,23 @@ export default {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
-.switch-btn-true {
+.ball-false-lg {
+  background-color: #c4c4c4;
+  border-radius: 50px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1px;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.switch-btn-true-sm {
   background-color: dodgerblue;
   border-radius: 7px;
   width: 25px;
@@ -86,12 +137,46 @@ export default {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
+.switch-btn-true-lg {
+  background-color: dodgerblue;
+  border-radius: 15px;
+  width: 45px;
+  display: flex;
+  justify-content: flex-end;
+  transition: 0.3s;
+  height: 24px;
+  align-items: center;
+  border: 2px solid rgb(30, 144, 255);
+  box-shadow: 0px 0px 0px 1.75px rgba(83, 169, 245, 0.7);
 
-.ball-true {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.ball-true-sm {
   background-color: #ffffff;
   border-radius: 50px;
   width: 10px;
   height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1px;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+.ball-true-lg {
+  background-color: #ffffff;
+  border-radius: 50px;
+  width: 18px;
+  height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,4 +196,3 @@ export default {
   cursor: pointer;
 }
 </style>
-

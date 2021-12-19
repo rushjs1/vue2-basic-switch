@@ -2,7 +2,23 @@
   <div class="home">
     Basic switch component
     <div class="parent">
-      <SwitchBtn class="switch-btn" :value="false" v-model="switchBtnValue" />
+      <div class="example-small">
+        Small
+        <SwitchBtn
+          class="switch-btn"
+          :value="false"
+          v-model="switchBtnValuesm"
+        />
+      </div>
+      <div class="example-large">
+        Large
+        <SwitchBtn
+          class="switch-btn"
+          :value="false"
+          v-model="switchBtnValuelg"
+          size="lg"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -15,13 +31,17 @@ export default {
     SwitchBtn
   },
   watch: {
-    switchBtnValue() {
-      console.log(this.switchBtnValue);
+    switchBtnValuesm() {
+      console.log("SwitchBtn-sm: " + this.switchBtnValuesm);
+    },
+    switchBtnValuelg() {
+      console.log("SwitchBtn-lg: " + this.switchBtnValuelg);
     }
   },
   data() {
     return {
-      switchBtnValue: false
+      switchBtnValuesm: false,
+      switchBtnValuelg: false
     };
   }
 };
@@ -38,5 +58,9 @@ export default {
 }
 .parent {
   margin-top: 3%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30%;
 }
 </style>
