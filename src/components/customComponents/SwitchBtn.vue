@@ -111,7 +111,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 1px;
+  margin-left: 2px;
 
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
@@ -180,8 +180,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 1px;
-
+  margin-right: 1px;
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
