@@ -9,6 +9,7 @@
           :value="false"
           v-model="switchBtnValuesm"
         />
+        <div class="state">State: {{ switchBtnValuesm }}</div>
       </div>
       <div class="example-large">
         Large
@@ -18,6 +19,7 @@
           v-model="switchBtnValuelg"
           size="lg"
         />
+        <div class="state">State: {{ switchBtnValuelg }}</div>
       </div>
     </div>
   </div>
@@ -62,5 +64,22 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   width: 30%;
+}
+.state {
+  margin-top: 10px;
+}
+.example-large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80px;
+}
+.example-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80px;
 }
 </style>
