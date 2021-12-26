@@ -2,6 +2,11 @@
   <div class="switch">
     <div
       ref="switchBtn"
+      :style="
+        !this.toggle
+          ? { 'background-color': falseSwitchColor }
+          : { 'background-color': color }
+      "
       :class="
         !this.toggle
           ? `switch-btn-false-${this.size}`
@@ -31,19 +36,29 @@ export default {
     size: {
       type: String,
       default: "sm"
+    },
+    color: {
+      type: String,
+      default: "#1e90ff"
     }
   },
   data() {
     return {
       toggle: this.value,
-      sizeValue: this.size
+      sizeValue: this.size,
+      falseBallColor: "#a2a2a2",
+      falseSwitchColor: "#ffffff"
     };
   },
   methods: {
     changeValue() {
       this.toggle = !this.toggle;
       this.$emit("input", this.toggle);
+      this.$refs.switchBtn.style.boxShadow = this.color;
     }
+  },
+  mounted() {
+    console.log(this.color);
   }
 };
 </script>

@@ -18,9 +18,13 @@
           :value="false"
           v-model="switchBtnValuelg"
           size="lg"
+          color="#fabb41"
         />
         <div class="state">State: {{ switchBtnValuelg }}</div>
       </div>
+    </div>
+    <div ref="tryThis">
+      Hello
     </div>
   </div>
 </template>
@@ -45,6 +49,9 @@ export default {
       switchBtnValuesm: false,
       switchBtnValuelg: false
     };
+  },
+  mounted() {
+    this.$refs.tryThis.style.backgroundColor = "#000000";
   }
 };
 </script>
