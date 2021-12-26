@@ -4,8 +4,10 @@
       ref="switchBtn"
       :style="
         !this.toggle
-          ? { 'background-color': falseSwitchColor }
-          : { 'background-color': color }
+          ? {
+              'background-color': falseSwitchColor
+            }
+          : cssVars
       "
       :class="
         !this.toggle
@@ -50,15 +52,23 @@ export default {
       falseSwitchColor: "#ffffff"
     };
   },
+  computed: {
+    cssVars() {
+      return {
+        "--bg-color": this.color
+      };
+    }
+  },
   methods: {
     changeValue() {
       this.toggle = !this.toggle;
       this.$emit("input", this.toggle);
-      this.$refs.switchBtn.style.boxShadow = this.color;
     }
   },
   mounted() {
-    console.log(this.color);
+    if (this.color != "#1e90ff") {
+      this.$refs.switchBtn.style.boxShadow = "none";
+    }
   }
 };
 </script>
@@ -143,8 +153,9 @@ export default {
   transition: 0.3s;
   height: 14px;
   align-items: center;
-  border: 2px solid rgb(30, 144, 255);
   box-shadow: 0px 0px 0px 1.75px rgba(83, 169, 245, 0.7);
+  background-color: var(--bg-color);
+  border: 2px solid var(--bg-color);
 
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
@@ -153,7 +164,6 @@ export default {
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 .switch-btn-true-lg {
-  background-color: dodgerblue;
   border-radius: 15px;
   width: 45px;
   display: flex;
@@ -161,8 +171,9 @@ export default {
   transition: 0.3s;
   height: 24px;
   align-items: center;
-  border: 2px solid rgb(30, 144, 255);
   box-shadow: 0px 0px 0px 1.75px rgba(83, 169, 245, 0.7);
+  background-color: var(--bg-color);
+  border: 2px solid var(--bg-color);
 
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
